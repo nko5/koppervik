@@ -1,3 +1,5 @@
+/*jshint node:true*/
+
 module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt);
 
@@ -7,8 +9,12 @@ module.exports = function (grunt) {
 			dev: {
 				dest: 'public/'
 			}
+		},
+		jshint: {
+			all: ["Gruntfile.js", "app.js"]
 		}
 	});
 
 	grunt.registerTask('default', []);
-}
+	grunt.registerTask('lint', ['jshint']);
+};
