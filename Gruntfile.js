@@ -7,7 +7,11 @@ module.exports = function (grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		bower: {
 			dev: {
-				dest: 'public/lib/'
+				dest: 'public',
+				js_dest: 'public/lib/',
+				options: {
+					keepExpandedHierarchy: false
+				}
 			}
 		},
 		jshint: {
