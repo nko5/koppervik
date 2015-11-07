@@ -1,27 +1,13 @@
-var app = require('http').createServer(handler);
-var io = require('socket.io')(app);
-var fs = require('fs');
+var express = require('express');
+var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 
-//Create a static file server
-app.configure(function() {
-  app.use(express.static(__dirname + '/public'));
-});
-
-function handler (req, res) {
-	fs.readFile(__dirname + '/public/index.html', function (err, data) {
-		if (err) {
-			res.writeHead(500);
-			res.end('Error loading index.html');
-		} else {
-			res.writeHead(200);
-			res.end(data);
-		}
-	});
-}
+app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function (socket) {
-	socket.emit('news', { hello: 'world' });
-	socket.on('my other event', function (data) {
+	socket.emit('event1', { hello: 'world' });
+	socket.on('event2', function (data) {
 		console.log(data);
 	});
 });

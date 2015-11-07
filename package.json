@@ -5,6 +5,7 @@
   "author": "David P Wolfe <david.p.wolfe@gmail.com>",
   "main": "./app.js",
   "dependencies": {
+    "express": "^4.13.3",
     "socket.io": "^1.3.7"
   },
   "scripts": {
