@@ -1,8 +1,8 @@
 {
-  "name": "nko2015-entry",
+  "name": "nko2015-koppervik",
   "version": "0.0.1",
-  "description": "Our soon to be awesome entry for NKO2015. Let's make something amazing.",
-  "author": "Node Knockout Team <all@nodeknockout.com>",
+  "description": "NKO2015 entry",
+  "author": "David P Wolfe <david.p.wolfe@gmail.com>",
   "main": "./app.js",
   "dependencies": {
     "express": "3.x.x"
@@ -10,6 +10,15 @@
   "scripts": {
     "start": "node app.js",
     "postinstall": "node scripts/postinstall.js"
-  }
-
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nko5/koppervik.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nko5/koppervik/issues"
+  },
+  "homepage": "https://github.com/nko5/koppervik#readme"
 }
