@@ -10,7 +10,26 @@ module.exports = function (grunt) {
 				dest: 'public',
 				js_dest: 'public/lib/',
 				options: {
-					keepExpandedHierarchy: false
+					keepExpandedHierarchy: false,
+					packageSpecific: {
+						phaser: {
+							files: [
+								"build/phaser.min.js"
+							]
+						},
+						"socket.io-client": {
+							files: [
+								"socket.io.js"
+							]
+						}
+					}
+				}
+			}
+		},
+		uglify: {
+			main: {
+				files: {
+					'public/lib/socket.io.min.js': ['public/lib/socket.io.js']
 				}
 			}
 		},
@@ -19,6 +38,6 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.registerTask('default', []);
+	grunt.registerTask('default', ['jshint', 'bower', 'uglify']);
 	grunt.registerTask('lint', ['jshint']);
 };
