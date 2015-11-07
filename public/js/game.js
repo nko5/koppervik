@@ -25,24 +25,10 @@ pulse.ready(function(){
 
   //Create a sprite, using a spritesheet
   //for its image
-  var dino =  new pulse.Sprite({
-    src: 'img/dino.png',
-    size: {width: 180, height: 89}
-  });
-  dino.position = {x: -125, y: 430};
-  layer.addNode(dino);
-
-  //Create and animation to animate our sprite
-  var animation = new pulse.AnimateAction({
-    name : 'Walking',
-    size : {width: 250, height: 124},
-    bounds : {x: 250, y: 124},
-    frames : [0,1,2,3,4,5,6,7],
-    frameRate : 8
-  });
-
-  dino.addAction(animation);
-  animation.start();
+  var dinos = [];
+  for (var i = 0; i < 6; i++) {
+    dinos.push(createDino(layer, i));
+  }
 
   //Create a label for our text
   var label = new pulse.CanvasLabel({
@@ -53,15 +39,48 @@ pulse.ready(function(){
 
   var loop = function(manager) {
     //Move the dino
-    dino.move(4, 0);
+    dinos.forEach(function (dino) {
+      dino.move(dino.velocity, 0);
 
-    //Wrap the dino when when runs off-screen
-    if(dino.position.x >= 950) {
-      dino.position.x = -125;
-    }
+      //Wrap the dino when when runs off-screen
+      if(dino.velocity > 0 && dino.position.x >= 950) {
+        dino.position.x = -125;
+      } else if(dino.velocity < 0 && dino.position.x < -125) {
+        dino.position.x = 950;
+      }
+    });
   };
 
   engine.scenes.activateScene(scene);
-  engine.go(30, loop);
+  engine.go(20, loop);
 });
 
+function createDino(layer, index) {
+  var dino = new pulse.Sprite({
+    src: 'img/dino.png',
+    size: {width: 180, height: 89}
+  });
+  layer.addNode(dino);
+  //Create and animation to animate our sprite
+  dino.velocity = (Math.random() * 4 + 2) * (Math.random() > 0.5 ? 1 : -1);
+  dino.position = {
+    x: dino.velocity > 0 ? -125 * Math.random() * 3 : 950 * Math.random() * 3,
+    y: 420 + index * 4
+  };
+
+  var animationSettings = {
+    name : 'Walking',
+    size : {width: 250, height: 124},
+    bounds : {x: 250, y: 124},
+    frames : [0,1,2,3,4,5,6,7],
+    frameRate : 8
+  };
+  if (dino.velocity < 0) {
+    animationSettings.frames.reverse();
+  }
+  var animation = new pulse.AnimateAction(animationSettings);
+
+  dino.addAction(animation);
+  animation.start();
+  return dino;
+}
