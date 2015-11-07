@@ -12,7 +12,8 @@
     "postinstall": "node scripts/postinstall.js"
   },
   "devDependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "jasmine": "^2.3.2"
   },
   "repository": {
     "type": "git",
