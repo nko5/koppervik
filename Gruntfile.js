@@ -2,7 +2,12 @@ module.exports = function (grunt) {
 	require('load-grunt-tasks')(grunt);
 
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json')
+		pkg: grunt.file.readJSON('package.json'),
+		bower: {
+			dev: {
+				dest: 'public/'
+			}
+		}
 	});
 
 	grunt.registerTask('default', []);
