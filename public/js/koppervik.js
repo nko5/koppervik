@@ -19,8 +19,17 @@ function preload() {
 
 }
 
-function create() {
+var consoleText;
 
+function create() {
+  // console
+  consoleText = game.add.text(20, 20, "Console", {
+  	font: 'Courier New',
+  	fontSize: 14,
+  	wordWrap: true,
+  	wordWrapWidth: 500,
+  	fill: 'white'
+  });
 }
 
 function update() {
