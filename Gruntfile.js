@@ -14,12 +14,8 @@ module.exports = function (grunt) {
 					packageSpecific: {
 						phaser: {
 							files: [
-								"build/phaser.min.js"
-							]
-						},
-						"socket.io-client": {
-							files: [
-								"socket.io.js"
+								"build/phaser.min.js",
+								"build/phaser.js"
 							]
 						}
 					}
