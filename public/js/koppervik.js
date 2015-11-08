@@ -8,7 +8,7 @@ socket.on('close', function () {
 	console.log('closed');
 });
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'gw', {
+var game = new Phaser.Game(document.documentElement.clientWidth, document.documentElement.clientHeight, Phaser.AUTO, 'gw', {
 	preload: preload,
 	create:  create,
 	update:  update,
@@ -30,4 +30,3 @@ function update() {
 function render() {
 
 }
-
