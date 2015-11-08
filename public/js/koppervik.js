@@ -50,9 +50,15 @@ function log(message) {
 
 function initSocket() {
 	var socket = new io();
-	socket.on('connected', function () { log("socket connected"); });
-	socket.on('message', function (data) {
-		log('received: ' + JSON.stringify(data));
+	socket.on('connected', function (data) {
+		log("socket connected");
+		log(data.message);
+	});
+	socket.on('new-user', function (data) {
+		log(data.message);
+	});
+	socket.on('user-gone', function (data) {
+		log(data.message);
 	});
 	socket.on('close', function () {
 		log('closed');
