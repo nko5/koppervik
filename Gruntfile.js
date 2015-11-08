@@ -25,7 +25,7 @@ module.exports = function (grunt) {
 		uglify: {
 			main: {
 				files: {
-					'public/lib/socket.io.min.js': ['public/lib/socket.io.js']
+					'public/js/koppervik.min.js': ['public/js/koppervik.js']
 				}
 			}
 		},
