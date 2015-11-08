@@ -64,7 +64,7 @@ function initSocket() {
 
 function createText() {
   // console
-  consoleText = game.add.text(20, 20, "Welcome to Koppervik's Node Knockout 2015 Entry", {
+  consoleText = game.add.text(20, 20, "Koppervik", {
   	font: consoleFont,
   	fontSize: 14,
   	wordWrap: true,
