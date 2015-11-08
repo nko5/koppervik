@@ -7,14 +7,8 @@ app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function (socket) {
 	console.log('user connected');
-	socket.on('ding', function (data) {
-		console.log('dong');
-	});
-	socket.emit('message', { hello: 'world' });
+	socket.emit('connected');
 });
-
-//Get the dummy data
-require('./server/ddata.js');
 
 var port = 8080;
 http.listen(port);
